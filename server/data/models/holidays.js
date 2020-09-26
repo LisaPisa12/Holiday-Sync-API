@@ -1,23 +1,26 @@
-module.exports = (sequelize, DataTypes) => {
+const { DataTypes } = require('sequelize');
 
-  const Holidays = sequelize.define('Holidays', {
+module.exports = (sequelize) => {
+
+  sequelize.define('holidays', {
     HolidayName: {
       type: DataTypes.STRING,
       allowNull: false
     }, 
     CountryID: {
-      type: DataTypes.INT,
+      type: DataTypes.INTEGER,
       allowNull: false
     }
   });
 
-  Holidays.associate = function ({Holidays, Countries, Dates}) {
-    Holidays.belongsToMany(Countries, {
-      foreignKey: {
-        name:'cid',
-        allowNull:false
-      }
-    });
-    Holidays.belongsToMany(Dates);
-  }
+  //change this
+  // Holidays.associate = function ({Holidays, Countries, Dates}) {
+  //   Holidays.belongsToMany(Countries, {
+  //     foreignKey: {
+  //       name:'cid',
+  //       allowNull:false
+  //     }
+  //   });
+  //   Holidays.belongsToMany(Dates);
+  // }
 } 

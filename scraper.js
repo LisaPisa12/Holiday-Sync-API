@@ -1,4 +1,8 @@
 const puppeteer = require('puppeteer');
+const Countries = require('./server/data/models/countries');
+const Dates = require('./server/data/models/dates');
+const Holidays  = require('./server/data/models/holidays');
+
 //
 
 
@@ -51,13 +55,17 @@ function extractIndividualData(list, date ) {
     countryEntry.CountryName = list.slice(0, colon);
     holidayEntry.HolidayName = list.slice(colon+1);
     dateEntry.Date = date;
-  }
 
-  return {countryEntry, holidayEntry, dateEntry}
+    Countries.create(countryEntry);
+    Holidays.create(holidayEntry);
+    Dates.create(dateEntry);
+    
+
+  }
 }
 
 
 
-scrapeHolidays(url);
-extractIndividualData();
+;
+extractIndividualData(scrapeHolidays(url));
 

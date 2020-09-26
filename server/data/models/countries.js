@@ -1,13 +1,18 @@
-module.exports = (sequelize, DataTypes) => {
+const { DataTypes } = require('sequelize');
 
-const Countries = sequelize.define('Countries', {
+
+module.exports = (sequelize) => { 
+  
+  sequelize.define('countries', {
   CountryName: {
     type: DataTypes.STRING,
     allowNull: false
   }
 });
 
-Countries.associate = function ({Holidays}) {
-  Countries.belongsToMany(Holidays);
+
+// //change this
+// Countries.associate = function ({Holidays}) {
+//   Countries.belongsToMany(Holidays);
+//  }
  }
-}

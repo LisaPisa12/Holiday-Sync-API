@@ -3,19 +3,9 @@ function applyAssociations(sequelize) {
   const {dates, countries, holidays} = sequelize.models;
   
   
-  dates.belongsTo(holidays, {through: holidays},{
-    foreignKey: {
-      name:'cid',
-      allowNull:false
-    }
-  });
+  dates.belongsTo(holidays, {through: holidays});
 
-  holidays.belongsTo(countries, {
-    foreignKey: {
-      name:'cid',
-      allowNull:false
-    }
-  });
+  holidays.belongsTo(countries);
 
 
   holidays.hasMany(dates);

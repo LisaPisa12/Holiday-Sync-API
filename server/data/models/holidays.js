@@ -6,10 +6,6 @@ module.exports = (sequelize) => {
     HolidayName: {
       type: DataTypes.STRING,
       allowNull: false
-    }, 
-    CountryID: {
-      type: DataTypes.INTEGER,
-      allowNull: false
     }
   });
 

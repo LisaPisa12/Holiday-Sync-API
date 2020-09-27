@@ -1,9 +1,11 @@
 const puppeteer = require('puppeteer');
-const Countries = require('./server/data/models/countries');
-const Dates = require('./server/data/models/dates');
-const Holidays  = require('./server/data/models/holidays');
+const db = require('./server/data/models');
 
-//
+// const Countries = require('./server/data/models/countries');
+// const Dates = require('./server/data/models/dates');
+// const Holidays  = require('./server/data/models/holidays');
+
+
 
 
 const url = 'https://www.officeholidays.com/calendars/2020/1/1';  // will need to replace the date part of make it interactive
@@ -30,8 +32,30 @@ async function scrapeHolidays(url) {
   console.log(date);
   console.log(list);
 
+
+  const countryEntry = {};
+  const holidayEntry = {};
+  const dateEntry = {};
+
+  for (let item = 0; item < list.length; item++) {
+    const colon = list[item].indexOf(':');
+    countryEntry.CountryName = list.slice(0, colon);
+    holidayEntry.HolidayName = list.slice(colon+1);
+    dateEntry.Date = date;
+
+    try {
+      await db.countries.create(countryEntry);
+      await db.holidays.create(holidayEntry);
+      await db.dates.create(dateEntry);
+      
+    } catch (error) {
+      console.log(error);
+    }
+   
+
+  }
+
   browser.close();
-  return { date, list};
 }
 
 const yearDict = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -44,28 +68,6 @@ for (let i = 0; i <= yearDict.length; i++) {
 }
 
 
-function extractIndividualData(list, date ) {
+scrapeHolidays(url)
 
-  const countryEntry = {};
-  const holidayEntry = {};
-  const dateEntry = {};
-
-  for (let item = 0; item < list.length; item++) {
-    const colon = item.indexOf(':');
-    countryEntry.CountryName = list.slice(0, colon);
-    holidayEntry.HolidayName = list.slice(colon+1);
-    dateEntry.Date = date;
-
-    Countries.create(countryEntry);
-    Holidays.create(holidayEntry);
-    Dates.create(dateEntry);
-    
-
-  }
-}
-
-
-
-;
-extractIndividualData(scrapeHolidays(url));
 

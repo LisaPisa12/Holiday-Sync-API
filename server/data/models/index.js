@@ -8,7 +8,7 @@ const {applyAssociations} = require('../associations');
 
 const db = {};
 
-const sequelize = new Sequelize('worlwideholidays', 'elisar', '', {
+const sequelize = new Sequelize('worldwideholidays', 'elisar', '', {
   host: 'localhost',
   dialect: 'postgres',
   logging: false,

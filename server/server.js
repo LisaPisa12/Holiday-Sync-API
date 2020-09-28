@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const db = require('./data/models');
 
+// const emitter = new EventEmitter()
+// emitter.setMaxListeners(0)
 
 (async () =>{
   try {

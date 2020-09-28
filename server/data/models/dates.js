@@ -2,21 +2,13 @@ const { DataTypes } = require('sequelize');
 
 
 module.exports = (sequelize) => { 
-  sequelize.define('dates', {
+  const dates = sequelize.define('dates', {
     Date: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
   }
 });
-//change this
-// Dates.associate = function({Holiday}) {
-//   Dates.belongsToMany(Holiday, { 
-//     foreignKey: {
-//       name:'hid',
-//       allowNull:false
-//     }
 
-//   });
-// }
+
 
 }

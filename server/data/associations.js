@@ -2,15 +2,14 @@ function applyAssociations(sequelize) {
   
   const {dates, countries, holidays} = sequelize.models;
   
+
   
-  dates.belongsTo(holidays, {through: holidays});
-
-  holidays.belongsTo(countries);
-
-
-  holidays.hasMany(dates);
-
+  
+  holidays.belongsTo(countries, {through: countries});
   countries.hasMany(holidays);
+  holidays.hasMany(dates);
+  dates.belongsTo(holidays, {through: holidays});
+  
   
 }
 

@@ -6,6 +6,7 @@ const modelDefiners = [ require('./countries'),
                         require('./holidays')];
 const {applyAssociations} = require('../associations');
 
+
 const db = {};
 
 const sequelize = new Sequelize('worldwideholidays', 'elisar', '', {
@@ -22,7 +23,6 @@ const sequelize = new Sequelize('worldwideholidays', 'elisar', '', {
 });
 
 
-
 for (const modelDefiner of modelDefiners) {
 	modelDefiner(sequelize);
 }
@@ -30,7 +30,10 @@ for (const modelDefiner of modelDefiners) {
 applyAssociations(sequelize);
 
 
+
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
 
 module.exports = db;

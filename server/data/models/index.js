@@ -6,6 +6,11 @@ const modelDefiners = [ require('./countries'),
                         require('./holidays')];
 const {applyAssociations} = require('../associations');
 
+const Op = Sequelize.Op;
+const operatorsAliases = {
+  $like: Op.like,
+  $not: Op.not
+}
 
 const db = {};
 
@@ -19,7 +24,8 @@ const sequelize = new Sequelize('worldwideholidays', 'elisar', '', {
     acquire: 30000,
     idle: 10000
   },
-  operatorsAliases: false // http://docs.sequelizejs.com/manual/tutorial/querying.html#operators
+  operatorsAliases
+  // operatorsAliases: true // http://docs.sequelizejs.com/manual/tutorial/querying.html#operators
 });
 
 

@@ -1,12 +1,10 @@
 'use strict';
 
-const { gql } = require('apollo-server');
-
 const query = require('./query.schema');
 const mutation = require('./mutation.schema');
-const types = require('./types.schema');
+const types = require('./type.schema');
 
-module.exports = gql`
+module.exports = `
   ${query}
   ${mutation}
   ${types}

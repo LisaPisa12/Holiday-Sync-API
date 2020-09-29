@@ -3,7 +3,7 @@
 import React from 'react';
 import { gql } from '@apollo/client';
 import { useQuery} from '@apollo/client';
-
+import moment from 'moment';
 
 
 
@@ -26,22 +26,27 @@ query   {
 
     return data.today.map(({ HolidayName, CountryName, Date }) => (
      
+  
         <div className="data">
-          <p>{HolidayName}</p>
+          
+          <p><strong>{HolidayName}</strong></p>
           <p>{CountryName}</p>
-          <p>{Date}</p>
+          <p>{moment().format('MMMM Do YYYY')}</p>
 
     <style jsx>{`
     .data{
-      display:flex; 
-      flex-direction:row; 
+      display:flex;
+      flex-direction:column; 
       justify-content:center; 
       align-items:center;
-      gap: 1em;
+      border:1px solid;
+      border-radius:16px;
+      width:25%;
+      margin: 1em;
     }
       `}</style>
         </div>
-  
+      
     ));
    }
 

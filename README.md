@@ -1,7 +1,7 @@
 # Holiday-Sync-API
 
 <p align="center">
-  <img src="./apiLogo.png" width="150">
+  <img src=".apiLogo/apiLogo.png" width="150">
 </p>
 
 <h1 align="center">Holidays GraphQL API</h1>
@@ -41,7 +41,7 @@ The above GraphQL query will produce the following JSON response:
       {
         "HolidayName": " Feast of San Vincent Ferrer ",
         "Date": "April20th2020"
-      }...]
+      }]
   }
 }
 ```

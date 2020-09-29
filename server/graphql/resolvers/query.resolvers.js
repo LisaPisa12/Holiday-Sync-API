@@ -9,7 +9,7 @@ module.exports = {
       const dates = await db.sequelize.models.dates.findAll(
         {where: { Date:currentDate},
         include:[
-          {model: db.sequelize.models.holidays, include: [db.sequelize.models.countries]}
+          {model: db.sequelize.models.holidays, include: [db.sequelize.models.countries, db.sequelize.models.dates]}
         ]})
       let holidays = dates.map(el => el.holiday)
       return holidays;
@@ -33,7 +33,6 @@ module.exports = {
   },
   holiday: async (_, {name}) => {
     try {
-      // to capitalize()
       const holidays = await db.sequelize.models.holidays.findAll(
         {where: { HolidayName: {[Op.like]: `% ${name} %`}},
         include:[
@@ -46,16 +45,37 @@ module.exports = {
   },
   country: async (_, {name}) => {
     try {
+      const cleanName = name.toLowerCase()
+      const capCountryName = cleanName.charAt(0).toUpperCase()+cleanName.slice(1);
       const country = await db.sequelize.models.countries.findOne(
-        {where: { CountryName: {[Op.like]: `%${name}%`}},
+        {where: { CountryName: {[Op.like]: `%${capCountryName}%`}},
         include:[
           {model: db.sequelize.models.holidays, include: [db.sequelize.models.countries, db.sequelize.models.dates]}
         ]})
-      // console.log(country.holidays[0].dates)
       return country.holidays;
     } catch (err) {
       console.log(err)
     }
   },
+
+  
+  rangeDates: async (_, {datesrange}) => {
+    try {
+      const fromDate = moment(datesrange.split('-')[0]).format('MMMMDoYYYY');;
+      const toDate =  moment(datesrange.split('-')[1]).format('MMMMDoYYYY');;
+
+     const dates = await db.sequelize.models.dates.findAll(
+         {where: { 
+          Date:{[Op.between]:[fromDate,toDate]}},
+        include:[
+          {model: db.sequelize.models.holidays, include: [db.sequelize.models.countries]}
+        ]});
+      let holidays = dates.map(el => el.holiday)
+      return holidays;
+    }catch(err){
+      console.log(err)
+    }
+  }
+
 
 }

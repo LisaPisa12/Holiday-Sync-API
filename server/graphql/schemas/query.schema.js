@@ -4,5 +4,6 @@ module.exports = `
     date(date:String): [Holidays],
     holiday(name:String): [Holidays],
     country(name:String): [Holidays],
+    rangeDates(datesrange:String):[Holidays]
   }
   `;

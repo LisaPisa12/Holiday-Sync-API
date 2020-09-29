@@ -1,7 +1,7 @@
 # Holiday-Sync-API
 
 <p align="center">
-  <img src="./apiLogo/apiLogo.png" width="150">
+  <img src="./apiLogo/apiLogo.png" width="250">
 </p>
 
 <h1 align="center">Holidays GraphQL API</h1>

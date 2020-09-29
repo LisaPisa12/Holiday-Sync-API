@@ -1,5 +1,3 @@
-const fs = require('fs');
-const path = require('path');
 const Sequelize = require('sequelize');
 const modelDefiners = [ require('./countries'),
                         require('./dates'),
@@ -25,7 +23,7 @@ const sequelize = new Sequelize('worldwideholidays', 'elisar', '', {
     idle: 10000
   },
   operatorsAliases
-  // operatorsAliases: true // http://docs.sequelizejs.com/manual/tutorial/querying.html#operators
+
 });
 
 

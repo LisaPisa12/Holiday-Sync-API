@@ -24,7 +24,7 @@ const GET_TODAY = gql`
 `;
 const GET_DATE = gql`
   query date {
-    date(date: "2020/10/01") {
+    date(date: "2020/11/18") {
       HolidayName
       CountryName
     }
@@ -33,7 +33,7 @@ const GET_DATE = gql`
 
 const GET_HOLIDAY = gql`
   query holiday {
-    holiday(name: "Hispanic") {
+    holiday(name: "independence") {
       HolidayName
       CountryName
       Date
@@ -42,7 +42,7 @@ const GET_HOLIDAY = gql`
 `;
 const GET_COUNTRY = gql`
   query country {
-    country(name: "spain") {
+    country(name: "Mordor") {
       HolidayName
       CountryName
       Date

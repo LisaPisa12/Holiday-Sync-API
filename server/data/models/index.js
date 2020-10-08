@@ -10,7 +10,7 @@ const operatorsAliases = {
 };
 
 const db = {};
-console.log(DATABASE.db_name);
+
 const sequelize = new Sequelize(DATABASE.db_name, DATABASE.db_user, DATABASE.db_password, {
   host: DATABASE.db_host,
   dialect: 'postgres',

@@ -5,77 +5,70 @@ const { Op } = db.Sequelize;
 module.exports = {
   today: async () => {
     try {
-      const currentDate = moment().format('MMMMDoYYYY');
-      const dates = await db.sequelize.models.dates.findAll(
-        {where: { Date:currentDate},
-        include:[
-          {model: db.sequelize.models.holidays, include: [db.sequelize.models.countries, db.sequelize.models.dates]}
-        ]})
-      let holidays = dates.map(el => el.holiday)
+      const currentDate = moment().format('MMMM Do YYYY');
+      const dates = await db.sequelize.models.dates.findAll({
+        where: { Date: currentDate },
+        include: [{ model: db.sequelize.models.holidays, include: [db.sequelize.models.countries, db.sequelize.models.dates] }],
+      });
+      let holidays = dates.map((el) => el.holiday);
       return holidays;
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   },
-  date: async (_, {date}) => {
+  date: async (_, { date }) => {
     try {
-      const formatedDate = moment(date).format('MMMMDoYYYY');
-      const dates = await db.sequelize.models.dates.findAll(
-        {where: { Date:formatedDate},
-        include:[
-          {model: db.sequelize.models.holidays, include: [db.sequelize.models.countries]}
-        ]})
-      let holidays = dates.map(el => el.holiday)
+      const formatedDate = moment(date).format('MMMM Do YYYY');
+      const dates = await db.sequelize.models.dates.findAll({
+        where: { Date: formatedDate },
+        include: [{ model: db.sequelize.models.holidays, include: [db.sequelize.models.countries] }],
+      });
+      let holidays = dates.map((el) => el.holiday);
       return holidays;
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   },
-  holiday: async (_, {name}) => {
+  holiday: async (_, { name }) => {
     try {
-      const holidays = await db.sequelize.models.holidays.findAll(
-        {where: { HolidayName: {[Op.like]: `% ${name} %`}},
-        include:[
-          {model: db.sequelize.models.countries}
-        ]})
+      const holidays = await db.sequelize.models.holidays.findAll({
+        where: { HolidayName: { [Op.like]: `%${name}%` } },
+        include: [{ model: db.sequelize.models.countries }, { model: db.sequelize.models.dates }],
+      });
       return holidays;
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   },
-  country: async (_, {name}) => {
+  country: async (_, { name }) => {
     try {
-      const cleanName = name.toLowerCase()
-      const capCountryName = cleanName.charAt(0).toUpperCase()+cleanName.slice(1);
-      const country = await db.sequelize.models.countries.findOne(
-        {where: { CountryName: {[Op.like]: `%${capCountryName}%`}},
-        include:[
-          {model: db.sequelize.models.holidays, include: [db.sequelize.models.countries, db.sequelize.models.dates]}
-        ]})
+      const cleanName = name.toLowerCase();
+      const capCountryName = cleanName.charAt(0).toUpperCase() + cleanName.slice(1);
+      const country = await db.sequelize.models.countries.findOne({
+        where: { CountryName: { [Op.like]: `%${capCountryName}%` } },
+        include: [{ model: db.sequelize.models.holidays, include: [db.sequelize.models.countries, db.sequelize.models.dates] }],
+      });
       return country.holidays;
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   },
 
-  
-  rangeDates: async (_, {datesrange}) => {
+  rangeDates: async (_, { datesrange }) => {
     try {
-      const fromDate = moment(datesrange.split('-')[0]).format('MMMMDoYYYY');;
-      const toDate =  moment(datesrange.split('-')[1]).format('MMMMDoYYYY');;
+      const fromDate = moment(datesrange.split('-')[0]).format('MMMM Do YYYY');
+      const toDate = moment(datesrange.split('-')[1]).format('MMMM Do YYYY');
 
-     const dates = await db.sequelize.models.dates.findAll(
-         {where: { 
-          Date:{[Op.between]:[fromDate,toDate]}},
-        include:[
-          {model: db.sequelize.models.holidays, include: [db.sequelize.models.countries]}
-        ]});
-      let holidays = dates.map(el => el.holiday)
+      const dates = await db.sequelize.models.dates.findAll({
+        where: {
+          Date: { [Op.between]: [fromDate, toDate] },
+        },
+        include: [{ model: db.sequelize.models.holidays, include: [db.sequelize.models.countries, db.sequelize.models.dates] }],
+      });
+      let holidays = dates.map((el) => el.holiday);
       return holidays;
-    }catch(err){
-      console.log(err)
+    } catch (err) {
+      console.log(err);
     }
-  }
-
-
-}
+  },
+};

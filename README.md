@@ -49,3 +49,9 @@ The above GraphQL query will produce the following JSON response:
 ## Docs
 
 Check out [the playground](link to playground will go here) to explore the schema and test out some queries.
+
+
+
+## Developers
+* Elizabeth Sarquiz - [Github](https://github.com/LisaPisa12/) - [LinkedIn](https://www.linkedin.com/in/elizabeth-sarquiz-55513a1b9/)
+* Jonander Elosua - [Github](https://github.com/Jonandereg) - [LinkedIn](https://www.linkedin.com/in/jonander-elosua-41095654/)

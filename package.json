@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "NODE_ENV=test jest -i",
-    "start": "node server.js"
+    "start": "node ./server/server.js"
   },
   "jest": {
     "testPathIgnorePatterns": [

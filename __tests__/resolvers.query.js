@@ -60,9 +60,7 @@ jest.mock('../server/data/models', () => ({
   },
 }));
 -(
-  // const testcountries = db.sequelize.models.countries;
-  // const testholidays = db.sequelize.models.holidays;
-  // const testdates = db.sequelize.models.dates;
+ 
 
   describe('get date query', () => {
     const date = '2020/10/07';

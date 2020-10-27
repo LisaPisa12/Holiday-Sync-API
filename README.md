@@ -50,6 +50,9 @@ The above GraphQL query will produce the following JSON response:
 
 Check out [the playground](link to playground will go here) to explore the schema and test out some queries.
 
+## Contributing
+
+To contribue please read the [CONTRIBUTING.md](https://github.com/LisaPisa12/Holiday-Sync-API/CONTRIBUTING.md)
 
 
 ## Developers

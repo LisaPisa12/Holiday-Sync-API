@@ -52,7 +52,7 @@ Check out [the playground](link to playground will go here) to explore the schem
 
 ## Contributing
 
-To contribue please read the [CONTRIBUTING.md](https://github.com/LisaPisa12/Holiday-Sync-API/CONTRIBUTING.md)
+To contribue please read the [CONTRIBUTING.md](https://github.com/LisaPisa12/Holiday-Sync-API/blob/master/CONTRIBUTING.md)
 
 
 ## Developers

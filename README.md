@@ -28,19 +28,19 @@ The above GraphQL query will produce the following JSON response:
   "data": {
     "country": [ {
         "HolidayName": " Saint Vincent the Martyr ",
-        "Date": "January22nd2020"
+        "Date": "January 22nd 2020"
       },
       {
         "HolidayName": " Andalucía Day ",
-        "Date": "February28th2020"
+        "Date": "February 28th 2020"
       },
       {
         "HolidayName": " Balearic Day ",
-        "Date": "March1st2020"
+        "Date": "March 1st 2020"
       },
       {
         "HolidayName": " Feast of San Vincent Ferrer ",
-        "Date": "April20th2020"
+        "Date": "April 20th 2020"
       }]
   }
 }
